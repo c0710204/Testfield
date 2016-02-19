@@ -13,38 +13,44 @@ void get_search_replace_strings(string input)
 {
    int change;
    char messg[256];
-   string search, replace1;
-   //cout << "Would you like to replace a part of your string? Yes = 1 No = 0" << endl;
-   printf("Would you like to replace a part of your string? Yes = 1 No = 0\n").c_str();  
+   char search[256], replace1[256];
+   cout << "Would you like to replace a part of your string? Yes = 1 No = 0" << endl;
+   //printf("Would you like to replace a part of your string? Yes = 1 No = 0\n").c_str();  
    cin >> change;
+   //getline(change,255);
+   //cin.getline(change,255);
    cout<<input<<endl;
    if(change == 1)
    {
       cout << "What do you want to change?" << endl;
       cin >> search;
+      cin.getline(search,255);
       input.find(search);
       cout << "What string do you want it to be replaced with" << endl;
       cin >> replace1;
+      cin.getline(replace1,255);
+      
 //    std::string input;
-	  boost::replace_all(input, search, replace1);
-//	  replace_all(input, search, replace1);
-	  }
-	  cout<<input<<endl;
+//      boost::replace_all(input, search, replace1);
+//      replace(input,search,replace1);
+//   replace_all(input, search, replace1);
+     }
+     cout<<input<<endl;
 }
 
 /*string search_replace(string input)
 {
-	
-}
+   
+}a
 */
 
-string userInput(string input)
+void userInput(char* input)
 {
 
    cout << "Input a string" << endl;
-   getline(cin,input);
+   cin.getline(input,255);
 
-   return input;
+   //return input;
 }
 
 bool determine_palindrome(string input)
@@ -56,7 +62,7 @@ bool determine_palindrome(string input)
       if(input[beg] != input[end])
       {
          cout << "Aint a palindrome" << endl;
-	 return false;
+    return false;
          
       }
       beg++;
@@ -68,8 +74,8 @@ bool determine_palindrome(string input)
 
 int main()
 {
-   string input;
-   input = userInput(input);
+   char input[256];
+   userInput(input);
    determine_palindrome(input);
    get_search_replace_strings(input);
    return 0;
