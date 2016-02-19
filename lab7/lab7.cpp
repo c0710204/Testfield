@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 #include <stdio.h>
 #include <string.h>
 #include <cstdlib>
@@ -11,8 +12,10 @@ using namespace std;
 void get_search_replace_strings(string input)
 {
    int change;
+   char messg[256];
    string search, replace1;
-   cout << "Would you like to replace a part of your string? Yes = 1 No = 0" << endl;
+   //cout << "Would you like to replace a part of your string? Yes = 1 No = 0" << endl;
+   printf("Would you like to replace a part of your string? Yes = 1 No = 0\n").c_str();  
    cin >> change;
    cout<<input<<endl;
    if(change == 1)
@@ -65,7 +68,7 @@ bool determine_palindrome(string input)
 
 int main()
 {
-   char input[256];
+   string input;
    input = userInput(input);
    determine_palindrome(input);
    get_search_replace_strings(input);
