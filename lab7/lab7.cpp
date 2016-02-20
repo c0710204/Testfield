@@ -17,24 +17,25 @@ void get_search_replace_strings(string input)
    cout << "Would you like to replace a part of your string? Yes = 1 No = 0" << endl;
    //printf("Would you like to replace a part of your string? Yes = 1 No = 0\n").c_str();  
    cin >> change;
-   //getline(change,255);
-   //cin.getline(change,255);
    cout<<input<<endl;
    if(change == 1)
    {
       cout << "What do you want to change?" << endl;
-      cin >> search;
+      //cin >> search;
+      cin.ignore();
       cin.getline(search,255);
       input.find(search);
       cout << "What string do you want it to be replaced with" << endl;
-      cin >> replace1;
+      //cin >> replace1;
       cin.getline(replace1,255);
+//    replace();
+      std::string input;
       
-//    std::string input;
-//      boost::replace_all(input, search, replace1);
+//      boost::replace_all(input, replace1, search);
 //      replace(input,search,replace1);
-//   replace_all(input, search, replace1);
+//      replace_all(input, search, replace1);
      }
+     
      cout<<input<<endl;
 }
 
