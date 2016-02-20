@@ -31,7 +31,15 @@ void get_search_replace_strings(string input)
 //    replace();
       std::string input;
       
-//      boost::replace_all(input, replace1, search);
+      boost::replace_all(input, replace1, search);
+/*
+      char[] replace(input,search,replace){
+         for (int i=0;strlen(input)<=；i++){
+*/
+
+
+         }
+      }
 //      replace(input,search,replace1);
 //      replace_all(input, search, replace1);
      }
