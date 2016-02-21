@@ -37,7 +37,7 @@ void get_search_replace_strings(string input)
          for (int i=0;strlen(input)<=；i++){
 */
 
-
+////
          }
       }
 //      replace(input,search,replace1);
