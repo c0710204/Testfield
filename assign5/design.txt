@@ -1,1 +1,187 @@
-test
+=====================================
+PART 0: MENU
+=====================================
+
+
+
+cout: 	1. Translate English to Morse
+		2. Translate Morse to English
+
+
+
+
+
+
+
+
+=====================================
+PART 1:  ENGLISH TO MORSE
+=====================================
+\\
+
+input function for english to morse:
+
+cin<<input     >>   input_array ==>>  []
+
+===<<<<
+
+
+check each element inside of input_array [] 
+
+for (0-[])    {
+	if A-Z & a-z    print >> "..." ,"  " ,"..."
+
+
+}
+
+===<<<<
+
+convert input_array to number:
+
+
+
+ASCII[*] - ASCII[0]  & ingnore <caps> and <lows> >>  [result]  >> database
+
+===<<<<
+
+database 
+
+[0][3]			[0]morse[A] >>		".-"  			
+[0][5]			[1]morse[B] >>		"-..."
+[0][4]			[2]morse[C] >>		"-.-."
+[0][2]			[3]morse[D] >>		"-.."
+[0][5]			[4]morse[E] >>		"."
+[0][4]			[5]morse[F] >>		"..-."
+[0][5]			[6]morse[G] >>		"--."
+[0][3]			[7]morse[H] >>		"...."
+[0][5]			[8]morse[I] >>		".."
+[0][4]			[9]morse[J] >>		".---"
+[0][5]			[10]morse[K] >>		"-.-"
+[0][3]			[11]morse[L] >>		".-.."
+[0][3]			[12]morse[M] >>		"--"
+[0][4]			[13]morse[N] >>		"-."
+[0][5]			[14]morse[O] >>		"---"
+[0][5]			[15]morse[P] >>		".--."
+[0][5]			[16]morse[Q] >>		"--.-"
+[0][4]			[17]morse[R] >>		".-."
+[0][4]			[18]morse[S] >>		"..."
+[0][2]			[19]morse[T] >>		"-"
+[0][4]			[20]morse[U] >>		"..-"
+[0][5]			[21]morse[V] >>		"...-"
+[0][4]			[22]morse[W] >>		".--"
+[0][5]			[23]morse[X] >>		"-..-"
+[0][5]			[24]morse[Y] >>		"-.--"
+[0][5]			[25]morse[Z] >>		"--.."
+[0][7]			[26]morse[ ] >>		"      "  				//space
+[0][6]			[27]morse[0]  >>	"-----"
+[0][6]			[28]morse[1]  >>	".----"
+[0][6]			[29]morse[2]  >>	"..---"
+[0][6]			[30]morse[3]  >>	"...--"
+[0][6]			[31]morse[4]  >>	"....-"
+[0][6]			[32]morse[5]  >>	"....."
+[0][6]			[33]morse[6]  >>	"-...."
+[0][6]			[34]morse[7]  >>	"--..."
+[0][6]			[35]morse[8]  >>	"---.."
+[0][6]			[36]morse[9]  >>	"----."
+
+===<<<<
+
+=====================================
+
+1. input 
+
+2. Generate an arrary to store english words
+
+3. Divede each letters and space to the 2D array 
+
+	eg: A ===>> [0][3]  ===> [3] == ".-"
+		S ===>> [18][4] ===> [4] =="..."
+
+4. Print each 2D arrays.
+
+
+
+=====================================
+PART 2:  MORSE TO ENG
+=====================================
+
+
+
+"... ... ... ... ... ... ..."
+
+
+"...","...","...","..." ....
+
+"..." >>> [][]
+
+
+
+for {
+	
+	                              ===>>>     [][] [][] [][] [][] [][] [][] [][] [][]
+
+}
+
+
+
+
+translate [][]  to A-Z & a-z
+
+=====================================
+
+1. input
+
+2. devide each morse code
+
+3. trans each morse code to 2D array
+
+4. translate 2D array to letters
+
+5. add space to at the end of translate. 
+
+
+
+=====================================
+PART 3: ERROR CHECKING   
+=====================================
+
+
+
+>>>	 	The user enters a message or letter outside of A-Z, a-z, and some punctuation.
+
+cout >> wrong input!    >> return to the main or morse to eng
+
+
+
+>>>	 	The user enters morse code with something other than . and – in it.
+
+cout >> wrong input!    >> return to the main or morse to eng
+
+
+>>>	 	The user enters an invalid menu choice.
+
+cout >> wrong input!    >> return to the main
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
