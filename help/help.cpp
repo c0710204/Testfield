@@ -69,10 +69,46 @@ bool is_boardFull(char** twoD_user,int rows, int cols,struct field_struct user_b
 
 	*/
 
+void remove_all_0(struct field_struct f,char** map_user,char** map,int i,int j)
+{
+	//printf("removing %d %d\n", i,j );
+	if ((i<0)||(j<0)||(i>=f.rows)||(j>=f.cols))return;
+	if (map_user[i][j]!=' ')return ;
+	if (map[i][j]!='0')
+	{
+		map_user[i][j]=map[i][j];
+		return;
+	}
+	map_user[i][j]=map[i][j];
+	remove_all_0(f,map_user,map,i-1,j);
+	remove_all_0(f,map_user,map,i-1,j-1);
+	remove_all_0(f,map_user,map,i,j-1);
+	remove_all_0(f,map_user,map,i+1,j-1);
+	remove_all_0(f,map_user,map,i+1,j);
+	remove_all_0(f,map_user,map,i+1,j+1);
+	remove_all_0(f,map_user,map,i,j+1);
+	remove_all_0(f,map_user,map,i-1,j+1);
+}
+// check map is open fully or not 0=>need more work 1=> opend all
+int check_pass(struct field_struct f,char** map_user,char** map)
+{
+	int i;int j;
+	
+	for (i=0;i<f.rows;i++)
+	{
+		for ( j = 0; j < f.cols; ++j)
+		{
+			if ((map[i][j]>='0')&&(map[i][j]<='9')&&(map_user[i][j]==' '))return 0;
+		}
+	}
+	return 1;
+}
+ char** cell(struct field_struct f);
 void guess_init(struct field_struct user_board){
 	int choice,o_x,o_y,count=0,rowcount =0,colcount=0,field_x=0, field_y=0;
 	char **twoD_user,field;
-
+	char **target_map;
+	target_map=cell(user_board);
 
 	twoD_user=new char*[user_board.rows];
 	for (int i=0;i<user_board.rows;i++){
@@ -100,6 +136,28 @@ while(field_x==0){
     if(choice==2){
         cout<<"rows, cols: ";
         cin>>o_y>>o_x;
+        if (target_map[o_y][o_x]=='*')
+        {
+        	//mine has been open!
+        	cout<<endl<<"Boom!"<<endl;
+        	return;
+        }
+        else
+        {
+        	//twoD_user[o_y][o_x]=target_map[o_y][o_x];
+        	remove_all_0(user_board,twoD_user,target_map,o_y,o_x);
+        	if (check_pass(user_board,twoD_user,target_map)==1)
+        	{
+        		//game success!
+        		printf("Success!\n");
+				for (int i=0;i<user_board.rows;i++){
+						for (int j=0;j<user_board.cols;j++){cout<<'[';
+						if(twoD_user[i][j] == ' ') {cout << ' ';}
+							else {cout << twoD_user[i][j];}cout<<']';}cout<<endl;} 
+							cout<<endl;        		
+       			return;
+        	}
+        }
 //        twoD_user[o_y][o_x]=twoD[o_y][o_x];
 }
 	else{cout<<"wrong input!"<<endl;}
@@ -137,7 +195,7 @@ void print_user_grid(){
 
 
 /*******GRID********/
- void cell(struct field_struct f){
+ char** cell(struct field_struct f){
 	 int rows=f.rows;int cols=f.cols;int mine=f.mines;
 	int count=0,rowcount =0,colcount=0,field_x=0, field_y=0;
 	char field;
@@ -212,6 +270,7 @@ void print_user_grid(){
 		if(twoD[i][j] == '*') {cout << "\e[1;31m*\e[0m";}
 			else {cout << twoD[i][j];}cout<<']';}cout<<endl;} 
 			cout<<endl;
+	return twoD;
 }
 /*******MAIN********/
 int main(int argc, char** argv){
@@ -234,7 +293,7 @@ int main(int argc, char** argv){
 do{
 
 	guess_init(f);
-	cell(f);
+	//cell(f);
 	cout<<"do you want to play again? (1-yes 2-no): ";
 	cin>>choice;
 	if (choice==1){play_again(f);} 
@@ -244,64 +303,3 @@ do{
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//ANSI escape code sequence
-
-//1 --> Good                                    
-//2 --> Good <-> Morderate                      
-//3 --> Morderate                               {cout << "\e[1;33m*\e[0m";}
-//4 --> Unhealthy for sensitive people          orange
-//5 --> Unhealthy                               red
-//6 --> Very Unhealthy                          
-//8 --> Hazadours                               
-//9 --> Beyond the index    
-/*
-		if(twoD[i][j] == '1') {cout << "\e[1;36m1\e[0m";}
-		if(twoD[i][j] == '2') {cout << "\e[1;32m2\e[0m";}
-		if(twoD[i][j] == '3') {cout << "\e[1;33m3\e[0m";}
-		
-		if(twoD[i][j] == '4') {cout << "\e[1;33m4\e[0m";}
-		if(twoD[i][j] == '5') {cout << "\e[1;34m5\e[0m";}
-		
-		if(twoD[i][j] == '6') {cout << "\e[1;34m6\e[0m";}
-		if(twoD[i][j] == '7') {cout << "\e[1;35m7\e[0m";}
-		if(twoD[i][j] == '8') {cout << "\e[1;31m8\e[0m";}
-*/ 
